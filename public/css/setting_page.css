@@ -1,0 +1,269 @@
+.personal_info, .change_pass, .change_notify {
+    width: 794px;
+    margin: 0 auto;
+    padding-left: 43px;
+    padding-right: 32px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+}
+
+.change_pass {
+    margin-top: 6px;
+}
+.change_pass, .change_notify {
+    margin-top: 20px;
+}
+
+.header_pi {
+    vertical-align: middle;
+    display: block;
+    height: 49px;
+    border-bottom: 1px solid #dedede;
+}
+
+.name_block_set {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-family: "Helvetica Neue Medium";
+    color: #f15d34;
+}
+.form_set {
+    padding-top: 23px;
+}
+
+.photo_load {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 270px;
+    cursor: pointer;
+}
+
+.photo_load #load_photo_user {
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.photo_load #descript_upload {
+    margin-left: 10px;
+    padding-left: 0;
+    padding-top: 8px;
+    cursor: pointer;
+    height: 36px;
+    width: 167px;
+    border: 1px solid #dedede;
+    background-color: #f0f0f0;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.photo_load input[type=file] {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.save_personal_info {
+    color: #fff;
+    height: 40px;
+    width: 94px;
+    background-color: #3b4685;
+    float: right;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+}
+.save_personal_info:hover {
+    color: #fff;
+    height: 40px;
+    width: 94px;
+    background-color: #3b4685;
+}
+.save_personal_info:focus {
+    color: #fff;
+    height: 40px;
+    width: 94px;
+    background-color: #3b4685;
+}
+
+.left_form_group {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.right_form_group {
+    padding-right: 0;
+    padding-left: 10px;
+    /*font-size: 14px;*/
+    /*height: 48px;*/
+}
+.middle_form_group {
+    padding-right: 0;
+    padding-left: 0px;
+}
+
+.left_form_group label, .right_form_group label {
+    font-size: 14px;
+    font-family: "Helvetica Neue Medium";
+    color: #000;
+}
+.left_form_group input, .right_form_group input {
+    font-size: 12px;
+    font-family: "Helvetica Neue Medium";
+    color: #757575;
+}
+
+.bottom_row_group .form-group {
+    margin-bottom: 0;
+}
+
+.sites_notify label {
+    padding: 0;
+    cursor: pointer;
+}
+.sites_notify label #first {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 20px;
+}
+.sites_notify label #last {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Helvetica Neue Medium";
+    color: #7e7e7e;
+    margin-bottom: 15px;
+}
+.sites_notify div {
+    padding: 0;
+    text-align: right;
+}
+.sites_notify input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.sites_notify input {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-top: 25px;
+    position: absolute;
+    right: 0;
+}
+.sites_notify input + i {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: #f15d34;
+    cursor: pointer;
+    margin-top: 25px;
+    border-radius: 2px;
+}
+.sites_notify input:checked + i {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    background-image: url('/img/checked_notifi.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.change_notify {
+    margin-bottom: 36px;
+}
+.change_notify .form_set {
+    padding-top: 0;
+}
+
+.brd_notifi {
+    border-top: 1px solid #dedede;
+}
+
+#personal_info_form #first_name,
+#personal_info_form #last_name,
+#personal_info_form #country,
+#personal_info_form #email,
+#personal_info_form #phone,
+#personal_info_form #old_pass,
+#personal_info_form #new_pass,
+#password,
+ #new_pass{
+    background-repeat: no-repeat;
+    background-position: 97% center;
+    height: 48px;
+}
+#personal_info_form #first_name,
+#personal_info_form #last_name {
+    background-image: url('/img/full_name_set_icon.png');
+}
+#personal_info_form #email {
+    background-image: url('/img/email_set_icon.png');
+}
+#personal_info_form #phone {
+    background-image: url('/img/phone_set_icon.png');
+}
+#password,
+ #new_pass {
+    background-image: url('../img/password_lock.png');
+}
+
+.settings_notification_line{
+    width: 715px;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+.form-control {
+    height: 45px;
+}
+
+@media (max-width:1350px ){
+    .personal_info, .change_pass, .change_notify{
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px ){
+    .left_form_group {
+        padding-right: 0;
+    }
+    .right_form_group {
+        padding-left: 0;
+    }
+}
+@media (max-width:470px ){
+    .header_pi {
+        height: 80px;
+    }
+    .save_personal_info {
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }
+    .name_block_set {
+        float: none;
+        text-align: center;
+    }
+    #load_photo_user {
+        display: block;
+        margin: 0 auto;
+    }
+    #descript_upload {
+        display: block !important;
+        margin: 5px auto !important;
+    }
+}

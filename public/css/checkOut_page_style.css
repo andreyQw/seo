@@ -1,0 +1,152 @@
+.col-h > .h1 {
+    margin-bottom: 135px;
+}
+.navbar-brand {
+    padding-left: 35px;
+}
+.nobs_nav {
+    margin-top: 35px;
+}
+.container {
+    padding: 0 !important;
+}
+#pay {
+    margin: 0 !important;
+}
+.md-sum {
+    /*padding-bottom: 90px;*/
+}
+.terms_conditions > a {
+    color: #f15d34;
+    text-decoration: underline;
+}
+.terms_conditions {
+    color: #999999;
+    font-weight: 100;
+}
+
+#pay:active {
+    background-color: #ec971f !important;
+}
+.yor-cart {
+    margin-top: 30px;
+}
+.title_checkout, .cust_info_block, .form-group {
+    padding-left: 0 !important;
+}
+.margin_10 {
+    margin-left: 0;
+}
+.summary {
+    margin-left: 0;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+/*.navbar-right {
+    padding-right: 25px;
+}*/
+
+.enter_code {
+    padding-left: 15px !important;
+}
+.btn_enter {
+    padding-right: 15px !important;
+}
+.md-sum {
+    padding: 22px 10px 0px 10px;
+}
+.lft {
+    padding-left: 0;
+}
+
+.your_cart_block {
+padding-left: 115px;
+}
+
+/*------CUSTOM CHECKBOX------*/
+#subscribeNews, .radio {
+	display: none !important;
+}
+
+.checkbox-custom, .radio-custom {
+	width: 20px;            
+	height: 20px;            
+	border: 2px solid #ccc;
+	border-radius: 3px;
+    position: relative;
+}
+
+.checkbox-custom,
+.label, .radio-custom {
+    margin-bottom: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.checkbox:checked + .checkbox-custom::before,
+.radio:checked + .radio-custom::before{
+	content: "";             
+	display: block;			 
+	position: absolute;      
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	left: 2px;
+	background: #f15d34;     
+	border-radius: 2px;
+}
+.radio-custom,
+.radio:checked + .radio-custom::before {
+	border-radius: 50%;
+}
+.terms_conditions_block {
+    margin-top: 10px;
+    display: block;
+    text-align: start;
+}
+#btn-my {
+    width: 100%;
+}
+/*.month_year_input {
+    display: inline-block;
+}*/
+#expiry_month, #expiry_year {
+    width: 35%;
+    display: inline-block
+}
+
+.your_cart_block {
+    padding-left: 145px !important;
+}
+/*------MEDIA-------*/
+@media (max-width: 1200px) {
+   .enter_code {
+    padding-left: 0 !important;
+}
+.btn_enter {
+    padding-right: 0 !important;
+}
+}
+@media (max-width: 991px) {
+    #btn-my {
+        width: 150px;
+    }
+    .title_checkout, .cust_info_block, .form-group {
+        padding-right: 0 !important;
+    }
+    .your_cart_block {
+        padding-left: 15px !important;
+    }
+}
+@media (max-width: 767px) {
+    .col-h > .h1 {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 396px){
+    .terms_conditions {
+        font-size: 11px;
+    }
+}

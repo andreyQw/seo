@@ -1,0 +1,453 @@
+/****---FEED---****/
+.main {
+    overflow-x: visible;
+}
+.block_feed {
+    background-color: #ffffff;
+}
+.block_feed_inside {
+    margin-bottom: 50px;
+    height: 100%;
+    padding: 0;
+}
+.full_feed_block {
+    padding: 0;
+/*    border-top: 2px solid #dedede;
+    height: 350px;*/
+    overflow-y: auto;
+}
+.left_feed_block {
+    height: 100%;
+    padding: 0;
+}
+.right_feed_block {
+    height: 100%;
+    padding: 0;
+}
+
+/*--------------message--------------*/
+.message {
+    height: 100%;
+}
+.arrow_box {
+    padding: 15px;
+	position: relative;
+	background: #f0f0f0;
+	border: 1px solid #eaeaea;
+    border-radius: 5px;
+}
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 9%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(240, 240, 240, 0);
+	border-bottom-color: #f0f0f0;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(234, 234, 234, 0);
+	border-bottom-color: #eaeaea;
+	border-width: 11px;
+	margin-left: -11px;
+}
+
+.time_ago {
+    text-align: end;
+    color: #c7c7c7;
+    display: block;
+}
+.time_ago i {
+    padding: 0;
+    font-size: 15px;
+}
+.user_photo>.name-user-mm,
+.user_photo>.surname-user-mm {
+    font-size: 25px;
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+}
+.user_photo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center center;
+    padding: 0;
+    text-align: center;
+    padding-top: 9px;
+}
+.user_name {
+    display: inline-block;
+    margin-top: 4px;
+}
+#website_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+    color: #f15d34;
+    margin: 0;
+    font-weight: 600;
+}
+
+#user_name {
+    color: #3b4685;
+    margin: 0;
+    font-weight: 600;
+}
+.message_box_left {
+    padding-bottom: 30px;
+    padding-right: 30px;
+    width: calc(50% + 1px);
+    border-right: 1px solid #dedede;
+}
+.message_box_right {
+    padding-bottom: 30px;
+    padding-left: 30px;
+    border-left: 1px solid #dedede;
+}
+.arrow_box p {
+    color: #878787;
+    font-size: 18px;
+}
+.message_box_left .user_block .user_name {
+  text-align: left;
+}
+/*---day_correspondence---*/
+.day_correspondence {
+    text-align: center;
+}
+.day_correspondence h3 {
+    font-weight: bold;
+}
+/*----NEW_ORDER-----*/
+.new_order i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.new_order a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----NEW_PROJECT_ADDED-----*/
+.new_project i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.new_project a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+
+/*----DOC_UPLOADED-----*/
+.doc_uploaded i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.doc_uploaded a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+
+.doc-massage-mm a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+    display: inline-block;
+    white-space: nowrap;
+}
+/*----NEW_USER_ADDED-----*/
+#user .arrow_box {
+    height: 100px;
+}
+/*-----BIO_CONFIRMED----*/
+#bio_confirmed_website {
+    text-decoration: underline;
+    font-weight: 100;
+    color: #878787;
+}
+.bio_confirmed i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.bio_confirmed a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----ANCHORS_CONFIRMED-----*/
+#anchors_confirmed {
+    text-decoration: underline;
+    font-weight: 100;
+    color: #878787;
+}
+.anchors_confirmed i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.anchors_confirmed a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----TOPIC_APPROVED-----*/
+.topic_approved i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.topic_approved a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----CONTENT WRITTEN-----*/
+.content_written i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.content_written a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----CONTENT_EDITED-----*/
+.content_edited i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.content_edited a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----CONTENT_PERSONALIZATION------*/
+.content_personalization i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.content_personalization a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+/*----PLACEMENT_LIVE-----*/
+.placement_live i {
+    color: #3b4685;
+    padding-right: 0;
+}
+
+.placement_live a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #3b4685;
+}
+
+.insides-massage-comment-mm {
+    padding: 0 !important;
+}
+.insides-massage-comment-mm .col-md-10 {
+    padding-right: 5px;
+}
+.insides-massage-comment-mm .col-md-10 {
+    padding-top: 25px;
+    padding-left: 15px;
+}
+.insides-massage-comment-mm .col-md-10 h4 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #3b4685;
+}
+.insides-massage-comment-mm .col-md-10 p {
+    text-align: end;
+}
+
+.massage-photo-comment-mm {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 15px 0 0 0;
+    padding:8px 0 0 9px !important;
+}
+
+.user_photo-none {
+    background: linear-gradient(to bottom right, #3b4685, #00c974);
+}
+
+.name-user-mm-1,
+.surname-user-mm-1 {
+    font-size: 20px !important;
+    display: inline-block;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.person-name-mm {
+    font-size: 15px !important;
+}
+
+.time-ago-mm {
+    text-align: end;
+}
+.time-ago-mm .mdi-arrow-down-bold-circle,
+.time-ago-mm .mdi-clock {
+    padding: 0;
+    font-size: 15px;
+}
+
+.time-ago-mm {
+    color: #c7c7c7;
+}
+.time-ago-mm span {
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+.insides-massage-mm p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #757575;
+    text-align: justify;
+}
+.insides-massage-mm a {
+    color: #f15d34;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+.insides-massage-mm i {
+  text-decoration: none;
+    padding-right: 5px;
+    color: #f15d34;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.insides-massage-mm {
+    padding-left: 30px;
+}
+
+.mdi-link-variant {
+    padding-right: 5px;
+}
+
+.full_cont {
+    margin-left: 30px;
+}
+
+.full_prod {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.full_prod:hover {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+
+/*----------@MEDIA-------------*/
+
+@media (max-width: 1200px) {
+    .arrow_box p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 991px) {
+    .message_box_right,
+    .message_box_left {
+        border: none;
+        width: 100%;
+    }
+    .message_box_left {
+        padding-right: 70px;
+    }
+    .message_box_right {
+        padding-left: 70px;
+    }
+
+    .message_box_left .arrow_box:after,
+    .message_box_left .arrow_box:before {
+        left: 12%;
+    }
+    .message_box_right .time_ago {
+        text-align: start;
+    }
+
+    .message_box_right .user_photo,
+    .message_box_right .user_name {
+        float: right;
+    }
+    .message_box_right .user_name h4 {
+        text-align: end;
+    }
+    .message_box_right .arrow_box:after,
+    .message_box_right .arrow_box:before {
+        right: 8%;
+        left: inherit;
+    }
+    .message_box_right {
+        padding: 0 0 30px 70px;
+    }
+    .message_box_left {
+        padding: 0 70px 30px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .day_correspondence h3 {
+        font-size: 18px;
+    }
+    .time_ago {
+        font-size: 12px;
+    }
+    #user_name {
+        font-size: 11px;
+    }
+    .user_photo {
+        padding-top: 3px;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+    }
+    h4 {
+        font-size: 14px;
+    }
+    .arrow_box p {
+        font-size: 12px;
+    }
+      .message_box_left {
+        padding: 0 30px 30px 0;
+    }
+ .message_box_right {
+        padding:  0 0 30px 30px;
+    }
+}

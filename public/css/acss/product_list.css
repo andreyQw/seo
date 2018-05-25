@@ -1,0 +1,31 @@
+.table_block {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+}
+.modal_style{
+    width: 50%;
+}
+
+.my_table{
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.vert_center {
+    vertical-align: middle;
+    /*text-align:center;*/
+    /*line-height: 40px;*/
+}
+
+.btn_add{
+    background-color: #242b54;
+}
+
+.icon_size {
+    font-size: 20px;
+}
+
+.th_text{
+
+}

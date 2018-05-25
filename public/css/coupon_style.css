@@ -1,0 +1,600 @@
+.all_info_sales, .all_campaigns {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 36px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+}
+
+
+.header_sales {
+    vertical-align: middle;
+    display: block;
+    height: 49px;
+    border-bottom: 1px solid #dedede;
+}
+
+.header_name_box, .name_header_campaigns {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-family: "Helvetica Neue Medium";
+    color: #f15d34;
+}
+
+.create_coupon_btn {
+    border-radius: 3px;
+    box-shadow: 0px 8px 19px 0px #fdebe6;
+    border: none;
+    color: #fff;
+    height: 40px;
+    background-color: #f15d35;
+    float: right;
+}
+.create_coupon_btn:hover {
+    box-shadow: 0px 8px 19px 0px #fdebe6;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    background-color: #f15d35;
+}
+.create_coupon_btn:focus {
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    height: 40px;
+    background-color: #f15d35;
+}
+
+.all_campaigns {
+    margin-top: 40px;
+}
+
+.header_campaigns {
+    vertical-align: middle;
+    display: block;
+    height: 49px;
+}
+
+.search_campaign, .reset_search_campaign {
+    width: 100%;
+}
+
+.search_campaign {
+    background-color: #f15d34;
+    color: #fff;
+}
+.search_campaign:hover {
+    background-color: #f15d34;
+    color: #fff;
+}
+.search_campaign:focus {
+    background-color: #f15d34;
+    color: #fff;
+}
+.reset_search_campaign {
+    background-color: #3b4685;
+    color: #fff;
+}
+.reset_search_campaign:hover {
+    background-color: #3b4685;
+    color: #fff;
+}
+.reset_search_campaign:focus {
+    background-color: #3b4685;
+    color: #fff;
+}
+.top_block {
+    padding: 0;
+}
+.top_block .col-md-3:last-child {
+    padding-right: 0;
+}
+
+.top_block .col-md-3:first-child {
+    padding-left: 0;
+}
+.top_block .top-block-content {
+    text-align: center;
+    border: 1px solid #efefef;
+    margin-top: 20px;
+    height: 120px;
+}
+
+.top_block .top-block-content span {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #757575;
+}
+.top_block .top-block-content h4 {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 20px;
+    color: #000000;
+}
+.top_block .top-block-content .wrapper-for-img-top-block {
+    vertical-align: middle;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    height: 50px;
+}
+.wrapper-for-img-top-block img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*-----TABLE_All_Campaigns------*/
+.table_coupons {
+    padding: 0;
+}
+.form-control {
+    border-radius: 0px;
+    
+}
+
+.reset_search_campaign {
+    height: 45px;
+    background-color: #242b54;
+    box-shadow: 0px 8px 19px 0px #e4e5ea;
+    border: none;
+}
+
+.search_campaign {
+    height: 45px;
+    background-color: #f15d34;
+    box-shadow: 0px 8px 19px 0px #fdebe6;
+    border: none;
+}
+progress[value]::-webkit-progress-bar {
+    background-color: #ffffff;
+    border: 1px solid #ededed;
+    border-radius: 2px;
+    height: 9px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #242b54;
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.progress {
+    height: 100%;
+    width: 75%;
+    margin-bottom: 0px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+}
+table.table-bordered tbody td {
+    border-bottom: none;
+    border-top: none;
+    vertical-align: middle;
+    height: 40px;
+}
+.coupon-table thead tr th {
+    border-bottom: none;
+    height: 40px;
+} 
+.coupon-table thead tr th:first-child {
+    padding: 15px 10px;
+}
+.coupon-table thead tr th:nth-child(2) {
+    padding: 15px 20px;
+    min-width: 250px;
+}
+.coupon-table thead tr th:nth-child(3),
+.coupon-table tbody tr td:nth-child(3){
+    min-width: 110px;
+    padding: 15px 25px;
+}
+.coupon-table thead tr th:nth-child(4) {
+    min-width: 110px;
+    padding: 15px 28px;
+}
+.coupon-table thead tr th:nth-child(5),
+.coupon-table tbody tr td:nth-child(5){
+    min-width: 104px;
+    padding: 15px 28px;
+}
+.coupon-table tbody tr td:nth-child(4) {
+    padding: 0px 28px;
+    padding-top: 7px;
+}
+.coupon-table tbody tr td:nth-child(5) {
+    padding: 15px 0px 15px 25px;
+}
+.coupon-table tbody tr td {
+    color: #757575;
+}
+.coupon-table tbody tr td:first-child {
+    padding: 10px 35px 10px 10px;
+    min-width: 275px;
+}
+.coupon-table tbody tr td:nth-child(2) {
+    padding: 10px 10px 10px 20px;
+}
+.coupon-table tbody tr td:first-child span {
+    float: right;
+    background-color: #0caa3e;
+    color: white;
+    border-radius: 3px;
+    min-width: 62px;
+    text-align: center;
+    height: 22px;
+}
+.coupon-table tbody tr td:nth-child(5) form a span img {
+    margin-right: -5px;
+}
+.coupon-table tbody tr td:nth-child(5) .edit_campaign {
+    padding-left: 8px;
+    border-left: 1px solid #e8e8e8;
+}
+
+.table_coupons {
+    overflow-x: auto;
+}
+/*STATUS CHECKBOX*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #3CB371;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+    background-image: url(/img/uncheckd_hren.png);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+input:checked + .slider.round:before {
+    border-radius: 50%;
+    background-image: url(/img/checked_hren.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.delete_campaign {
+    display: inline-block;
+}
+
+
+/*   --- MODAL WINDOW ---   */
+#create_campaing .modal-dialog {
+    margin-top: 50px;
+}
+.tab-content {
+    margin-left: 0;
+}
+
+.row_first, .third_row, .second_tab_row {
+    margin: 0;
+}
+.launch_campaign {
+    margin-top: 25px;
+    background-color: #3b4685;
+    color: #fff;
+    width: 100%;
+    height: 45px;
+    border: none;
+}
+.launch_campaign:hover {
+    margin-top: 25px;
+    background-color: #3b4685;
+    color: #fff;
+    width: 100%;
+    height: 45px;
+    border: none;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+}
+.launch_campaign:focus {
+    margin-top: 25px;
+    background-color: #3b4685;
+    color: #fff;
+    width: 100%;
+    height: 45px;
+    border: none;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+}
+.tab-content{
+    margin: 2px 0 5px 0px;
+}
+.modal-header {
+    padding: 20px 30px;
+}
+.nav-tabs {
+    padding-left: 55px;
+}
+.modal-dialog {
+        width: 991px;
+}
+
+.third_row .form-row label {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+.third_row .form-row input {
+    border-radius: 3px;
+}
+.form-first {
+    padding-left: 27px;
+}
+.form-last {
+    padding-right: 27px;
+}
+.modal-content ul li {
+    font-weight: bold;
+}
+.modal-content ul li a {
+    color: #757575;
+}
+.modal-content ul li a:hover {
+    color: #757575;
+}
+
+.row_first input,
+.row_first select {
+    border-radius: 3px;
+}
+.row_first .col-md-3,
+.row_first .col-md-9 {
+    margin-top: 25px;
+}
+.row_first .col-md-3,
+.row_first .col-md-6:first-child,
+.row_second .col-md-6:first-child,
+.row_second .col-md-2,
+.row_second .col-md-12 {
+    padding-left: 15px;
+}
+
+form .form-group {
+    margin-bottom: 25px;
+}
+.row_first .col-md-6:last-child,
+.row_first .col-md-9, 
+.row_second .col-md-6:last-child,
+.row_second .col-md-12 {
+    padding-right: 27px;
+}
+form .col-md-12 {
+    padding: 0 27px;
+}
+
+.row_second .col-md-6,
+.row_second .col-md-10,
+.row_second .col-md-2{
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+.row_second .col-md-6 input,
+.row_second .col-md-6 ul {
+    height: 45px;
+    border-radius: 3px;
+}
+.row_second .col-md-12 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.row_second .col-md-12 input{
+    height: 45px;
+    border-radius: 3px;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+    margin: -3px 0 !important;
+}
+.chosen-choices li {
+    margin: 12px 5px 3px 0 !important;
+}
+/*>>>>>>>>checkbox<<<<<<<<<<<*/
+.chik,
+.chek {
+    display: none;
+}
+.checkbox-custom,
+.checkbox-custom2 {
+	position: relative;      
+	width: 20px;           
+	height: 20px;           
+	border: 2px solid #f15d34;
+	border-radius: 3px;
+}
+
+.label {
+    margin-bottom: 0;
+    width: 90%;
+    white-space: normal;
+    text-align: start;
+}
+.checkbox-custom,
+.checkbox-custom2,
+.label {
+	display: inline-block;
+	vertical-align: middle;
+}
+.chik:checked + .checkbox-custom::before {
+	content: "";           
+	display: block;			
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	background: #f15d34;
+	border-radius: 3px;
+    background-image: url(/img/checked_hren_modal.png);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.chek:checked + .checkbox-custom2::before {
+	content: "";           
+	display: block;			
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	background: #f15d34;
+	border-radius: 3px;
+    background-image: url(/img/checked_hren_modal.png);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.row_first .col-md-12 .label,
+.row_second .col-md-10 label {
+    color: #757575;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+/*--------MEDIA_MODAL--------*/
+
+@media (max-width: 991px) {
+    .top_block .col-md-3:first-child {
+    padding-left: 15px;
+}
+    .top_block .col-md-3:last-child {
+    padding-right: 15px;
+}
+    .top_block .top-block-content {
+        height: 140px;
+    }
+    #create_campaing {
+        padding-left: 0;
+    }
+.nav-tabs > li > a {
+        padding: 10px 3px;
+    margin-right: 0;
+    font-size: 12px;
+    }
+.modal-tabs {
+        padding: 0 3px;
+    }
+.modal-dialog {
+        width: 90%;
+    }
+.form-first {
+    padding-left: 15px;
+}
+.form-last {
+    padding-right: 15px;
+}
+    .row_first .col-md-3,
+.row_first .col-md-6:first-child,
+.row_second .col-md-6:first-child,
+.row_second .col-md-2,
+.row_second .col-md-12 {
+    padding-left: 15px;
+}
+    .row_first .col-md-6:last-child,
+.row_first .col-md-9, 
+.row_second .col-md-6:last-child,
+.row_second .col-md-12 {
+    padding-right: 15px;
+}
+    #create_campaing .modal-dialog {
+    margin-top: 80px;
+}
+}
+
+@media (max-width: 550px){
+.modal-content {
+    height: 100%;
+}
+}
+@media (max-width: 467px) {
+    .tab-content {
+        height: 100%;
+    }
+    .nav-tabs > li > a {
+        padding: 10px 6px;
+    }
+    .modal-content ul li {
+        margin-left: 2px;
+    }
+}
+
+/*--------MEDIA--------*/
+@media (max-width: 1344px) {
+    .top_block .top-block-content {
+        height: 145px;
+    }
+}
+@media (max-width: 991px) {
+    .all_info_sales, .all_campaigns {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+        .top_block .col-md-3:last-child {
+    padding-right: 15px;
+}
+
+.top_block .col-md-3:first-child {
+    padding-left: 15px;
+}
+}
+@media (max-width: 371px) {
+    .header_sales {
+        height: 85px;
+        text-align: center;
+    }
+    .header_name_box {
+        margin-bottom: 5px;
+        float: none;
+    }
+    .create_coupon_btn {
+        float: none;
+    }
+}

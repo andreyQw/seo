@@ -1,0 +1,319 @@
+/*---FIRST_BLOCK---*/
+.personal_info,
+.change_pass,
+.change_notify {
+    width: 860px;
+    margin: 20px auto;
+    padding: 20px 25px;
+}
+
+.confirm_changes {
+    width: 860px;
+    margin: 20px auto;
+    padding: 0;
+}
+#load_photo_user {
+    margin: 0 auto;
+    height: 70px !important;
+    width: 70px !important;
+    border-radius: 70px;
+    background-size: cover;
+    background-position: center center;
+}
+.form_set table tr td:last-child {
+  min-width: 100px;
+}
+
+.col-sm-12,
+.col-sm-2,
+.col-sm-5 {
+    padding: 0;
+}
+
+#password, #password_confirmation {
+    background-image: url('../img/password_lock.png');
+    background-repeat: no-repeat;
+    background-position: 97% center;
+    height: 48px;
+}
+.photo_load #descript_upload {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    display: block;
+    color: ##7e7e7e;
+    font-weight: 100;
+}
+
+
+/*---POPUP-DoItNow---*/
+
+.info_bio,
+.form-group {
+    text-align: start;
+}
+
+.popup_caption {
+    font-size: 17px;
+}
+.modal-header {
+    padding: 14px 14px 0px 27px !important;
+}
+.bio_popup_line {
+    margin-bottom: 0;
+}
+.btn_inform,
+.btn_inform:hover {
+    width: 100%;
+    font-size: 12px;
+    height: 45px;
+    background-color: #f15d34;
+    color: #fff;
+    border: none;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.btn_inform:active {
+    border: 1px solid #f15d34;
+    background-color: #F15D29;
+}
+.image_bio {
+    display: inline-block;
+}
+.left_colmn,
+.right_colmn {
+    display: inline-block;
+    width: 261px;
+    height: 245px;
+    padding: 10px;
+}
+
+.right_colmn {
+    display: inline-block;
+    float: right;
+    height: 245px;
+    width: 259px;
+}
+.cont_load {
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    position: relative;
+    vertical-align: middle;
+}
+#new_screen_name {
+    width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+    display: inline-block;
+    text-overflow: clip;
+    vertical-align: middle;
+    font-size: 12px;
+    font-family: "Helvetica Neue Medium";
+    color: #9a9a9a;
+    margin-top: 13px;
+    margin-left: 10px;
+}
+#upload_new {
+    position: absolute;
+    right: 0;
+    width: 122px;
+    height: 40px;
+    background-color: #939393;
+    float: right;
+    margin-top: 2px;
+    margin-right: 5px;
+    color: #fff;
+}
+
+.cont_load input[type=file] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#bio_write {
+    height: 106px;
+    width: 240px;
+    resize: none;
+}
+
+
+/**---LAST_BLOCK---**/
+.success-bio-send-mm {
+    height: 44px;
+    margin-bottom: 0;
+    padding: 13px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+#form_errors {
+    /*border: 1px solid rgb(202, 135, 139);*/
+    border-radius: 5px;
+    background-color: rgb(242, 218, 214);
+    padding-left: 10px;
+    margin: 0 10px;
+}
+#please_wait {
+    border-radius: 5px;
+    padding-left: 10px;
+    margin: 0 10px;
+}
+.project_nobs_my_bio,
+.project_nobs_my_bio:hover {
+    border-radius: 3px;
+    font-size: 12px;
+    height: 45px;
+    width: 157px;
+    border: 1px solid #f8b3a0;
+    background-color: #f15d34;
+    box-shadow: 0px 16px 19px 0px #fdebe6;
+}
+.project_nobs_my_bio:active {
+    background-color: #F15D50;
+}
+.project_doit_now_bio,
+.project_doit_now_bio:hover {
+    border-radius: 3px;
+    background-color: #3b4685;
+    border: 1px solid #a3a8c6;
+    font-size: 12px;
+    height: 45px;
+    width: 85px;
+    color: #ffffff;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+}
+
+.select_last_block {
+    width: 116px;
+    height: 44px;
+    border-radius: 3px;
+    border: 2px solid #ededed;
+    color: #7e7e7e;
+    font-size: 12px;
+}
+
+.no_of_units {
+    width: 75px;
+    height: 44px;
+    background-color: #f0f0f0 !important;
+    border-radius: 3px;
+    border: 2px solid #e6e6e6;
+    font-size: 12px;
+    color: #7d7d7d;
+    cursor: default !important;
+}
+
+.type_of_product {
+     width: 160px;
+    height: 44px;
+    background-color: #f0f0f0 !important;
+    border-radius: 3px;
+    border: 2px solid #e6e6e6;
+    font-size: 12px;
+    color: #7d7d7d;
+    cursor: default !important;
+}
+
+.website_name {
+     width: 160px;
+    height: 44px;
+    background-color: #ffffff !important;
+    border-radius: 3px;
+    border: 2px solid #e6e6e6;
+    font-size: 12px;
+    color: #7d7d7d;
+    cursor: default !important;
+}
+
+.project_nobs_my_bio,
+.website_name,
+.type_of_product,
+.no_of_units,
+.project_doit_now_bio,
+.select_last_block {
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.confirm_account_setiings,
+.confirm_account_setiings:hover {
+    color: #fff;
+    height: 40px;
+    width: 118px;
+    background-color: #3b4685;
+    float: left;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+    border-radius: 4px;
+}
+
+.confirm_account_setiings:active,
+.project_doit_now_bio:active {
+    background-color: #3B46B0;
+}
+
+.save_personal_info,
+.save_personal_info:hover {
+    color: #fff;
+    height: 45px;
+    font-size: 14px;
+    width: 100%;
+    background-color: #3b4685;
+    box-shadow: 0px 16px 19px 0px rgba(59, 70, 133, 0.18);
+}
+
+.save_personal_info:focus {
+    width: 100%;
+    height: 45px;
+}
+.bio_modal_dialog {
+  height: 50%;
+}
+.modal-content {
+  height: 100%;
+}
+/******MEDIA*****/
+@media (max-width: 991px) {
+  ..modal-content {
+    height: 100%;
+  }
+  .personal_info, .change_pass, .change_notify {
+    width: 100%;
+  }
+  .photo_load {
+    margin: 0 auto;
+  }
+  .header_pi {
+    height: 40px;
+  }
+  .form_set {
+    overflow-x: auto;
+  }
+  #add_website_drop {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .card_inputs .form-group {
+    padding-right: 0;
+  }
+}
+@media (max-width: 767px) {
+  .bio_modal_dialog {
+    height: 75%;
+  }
+  .right_colmn,
+  #bio_write,
+  .left_colmn {
+    width: 100%;
+  }
+}

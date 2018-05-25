@@ -1,0 +1,65 @@
+
+/*div.dataTables_filter label*/
+/*{*/
+    /*display: block;*/
+/*}*/
+
+body {
+    color: #3b4685;
+}
+.dataTables_filter{
+    text-align: left !important;
+}
+div.dt-buttons {
+    float: right !important;
+}
+.buttons-csv {
+    border: 0px !important; ;
+}
+.mdi-download {
+    color: #00c973 !important;
+}
+.approve {
+    text-align: center;
+    vertical-align: middle;
+}
+td.input {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+}
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+textarea {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+}
+mark {
+    padding: 0;
+    background: red !important;
+    color: black;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    border-radius: 10%;
+}
+.search_btn{
+    border: 1px solid #3b4685;
+    border-radius: 10%;
+
+}

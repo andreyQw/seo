@@ -1,0 +1,40 @@
+.orders_cont, .extra_info_cont {
+    border: 1px solid #dddddd;
+    padding: 22px 27px 9px 25px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    /* margin-top: 24px; */
+    background-color: #fff;
+}
+
+
+.add_anchors_links {
+    float: left;
+    display: block;
+    font-size: 20px;
+    font-family: "Helvetica Neue Medium";
+    color: #f15d34;
+}
+
+.orders_table{
+    margin-top: 20px;
+}
+
+.order_email{
+    color: #f15d34;
+}
+
+.icon_show{
+    color: #f15d34;
+    font-size: 22px;
+}
+
+.icon_pdf{
+    color: #2fdd81;
+    font-size: 22px;
+}
+.icon_print{
+    color: black;
+    font-size: 22px;
+}
