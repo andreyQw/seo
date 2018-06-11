@@ -22,23 +22,23 @@ class BioManagerController extends Controller
 
         if($user->hasRole('client')){
 
-        	$projs = $user->projects;
-        	$need_bio = array();
-        	$confirm_bio = array();
-        	foreach ($projs as $proj) {
-        		if(!$proj->bio){
-        			$need_bio[] = $proj;
-        		}elseif(!$proj->bio->help){
-        		    $confirm_bio[] = $proj;
+            $projs = $user->projects;
+            $need_bio = array();
+            $confirm_bio = array();
+            foreach ($projs as $proj) {
+                if(!$proj->bio){
+                    $need_bio[] = $proj;
+                }elseif(!$proj->bio->help){
+                    $confirm_bio[] = $proj;
                 }
-        	}
+            }
             return view('client.bio_manager', ['projects' => $need_bio, 'confirmed' => $confirm_bio]);
 
         }elseif ($user->hasAnyRole('super_admin|admin|pm')){
             
-        	if($user->hasAnyRole('super_admin|admin')){
+            if($user->hasAnyRole('super_admin|admin')){
                 $bios = Bio::where('help', false)->get();
-        	}else{
+            }else{
                 $bios = array();
                 foreach ($user->projects as $proj) {
                     if($proj->bio && $proj->bio()->where('help', false)->first()){
@@ -49,7 +49,6 @@ class BioManagerController extends Controller
 
             return view('admin.bio_manager', ['bios' => $bios]);
         }
-
     }
 
     public function help_bio(Request $req)
@@ -65,7 +64,6 @@ class BioManagerController extends Controller
         Auth::user()->projects()->find($req->id)->bio()->save($bio);
 
         return response()->json(['success']);
-
     }
 
     public function confirm(Request $req)
@@ -74,7 +72,7 @@ class BioManagerController extends Controller
             return redirect()->action('BioManagerController@index');
         }
 
-    	if(!empty($req->file('screen'))){
+        if(!empty($req->file('screen'))){
             $filename = time() . "_bio.png";
             $req->file('screen')->move('storage/bio_img', $filename);
         }else{
@@ -82,15 +80,15 @@ class BioManagerController extends Controller
         }
 
         if(!$req->bio_write){
-        	return redirect()->back()->with('error', 'Please Bio write!');
+            return redirect()->back()->with('error', 'Please Bio write!');
         }
 
         $bio = new Bio([
-    		'text' => $req->bio_write,
-    		'image' => $filename,
-		]);
-    	
-    	Auth::user()->projects->find($req->site)->bio()->save($bio);
+            'text' => $req->bio_write,
+            'image' => $filename,
+        ]);
+
+        Auth::user()->projects->find($req->site)->bio()->save($bio);
 
         foreach (Project::find($req->site)->users as $user) {
             if($user->hasRole('client') && $user->pivot->enable_notifi){
@@ -100,8 +98,7 @@ class BioManagerController extends Controller
 
         EventComponent::new_event(Project::find($req->site), 'bio', $bio->id);
 
-    	return redirect()->action('BioManagerController@index');
-
+        return redirect()->action('BioManagerController@index');
     }
 
     public function view_modal(Request $req)
@@ -189,7 +186,6 @@ class BioManagerController extends Controller
         }
 
         return view('admin.request_bio_manager', ['projects' => $res_arr]);
-
     }
 
     public function add_bio(Request $req)
@@ -210,11 +206,6 @@ class BioManagerController extends Controller
         $filename = time() . "_bio.png";
         $req->file('screen')->move('storage/bio_img', $filename);
 
-        /*$bio = new Bio([
-            'text' => $req->text,
-            'image' => $filename,
-        ]);*/
-
         $bio = Project::find($req->id)->bio;
         $bio->image = $filename;
         $bio->text = $req->text;
@@ -230,7 +221,6 @@ class BioManagerController extends Controller
         }
 
         return redirect()->action('BioManagerController@requests');
-
     }
 
     public function search_request_bio (Request $req)
