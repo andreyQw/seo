@@ -13,18 +13,7 @@ class UsersController extends Controller
 {
     public function index () {
 
-        /*Auth::user()->projects()->save(Project::find(1));*/
-
-        /*$projs = Auth::user()->projects;
-        $arr_access = array();
-        foreach ($projs as $proj) {
-            $arr_access[] = Auth::user()->id;
-        }
-        $inaccess = Project::whereNotIn('id', $arr_access)->get();
-        dd($inaccess);*/
-
         return view('setting');
-
     }
 
     public function change_password (Request $req) {
@@ -45,7 +34,6 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()->action('UsersController@index');
-
     }
 
     public function change_personal_info (Request $req) {
@@ -81,7 +69,6 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()->action('UsersController@index');
-
     }
 
     public function change_notifi (Request $req) {
@@ -102,7 +89,6 @@ class UsersController extends Controller
         }
 
 
-
         $en_sites = $projs->whereIn('id', $enable);
         foreach ($en_sites as $en) {
             $en->pivot->enable_notifi = true;
@@ -116,7 +102,6 @@ class UsersController extends Controller
         }
 
         return redirect()->action('UsersController@index');
-
     }
 
     public function stop_sending (Request $req) {

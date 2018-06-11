@@ -134,7 +134,6 @@ class PartnersController extends Controller
 
     public function edit(Request $req)
     {
-
         $partner = Partner::find($req->id);
 
         foreach ($req->all() as $key => $val){

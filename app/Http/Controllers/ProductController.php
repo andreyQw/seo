@@ -15,26 +15,21 @@ class ProductController extends Controller
     {
         $products = Product::where([
             'deleted' => 'existing',
-//            'status' => 'deleted',
         ])->get()->all();
 
         return view('admin.product.productList',[
             'products' => $products,
-//            'name' => $full_name,
         ]);
     }
 
     public function addFormProduct()
     {
         return view('admin.product.addProductForm',[
-                'action' => route('addNewProduct'),
-            ]
-    );
+            'action' => route('addNewProduct'),
+        ]);
     }
     public function editFormProduct(Product $product)
     {
-//        dd($product);
-
         return view('admin.product.addProductForm', [
             'product' => $product,
             'action' => route('editProduct', [
@@ -52,7 +47,7 @@ class ProductController extends Controller
         $product->categorie_id = 1;
         $product->status = 'show';//hide
         $product->deleted = 'existing';//deleted
-//        dd($product);
+
         $product->save();
 
         return redirect()->route('productList');
@@ -81,13 +76,10 @@ class ProductController extends Controller
         $dataId = $request->id;
         $dataStatus = $request->status;
         $product = Product::where('id', $dataId)->first();
-//        $product->categorie_id = 1;
         $product->status = $dataStatus;
         $product->save();
-//        dd($data);
-        return ;
+
+        return true;
     }
-
-
-
+    
 }

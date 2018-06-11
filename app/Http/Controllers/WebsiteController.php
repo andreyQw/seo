@@ -47,12 +47,6 @@ class WebsiteController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -126,6 +120,7 @@ class WebsiteController extends Controller
         }
         return redirect()->back();
     }
+
     public function show($id)
     {
         $project = Project::find($id);
@@ -144,11 +139,6 @@ class WebsiteController extends Controller
             ->withProject($project)
             ->withQuantity($quantity)
             ->withProductions($productions);
-    }
-
-    public function edit($id)
-    {
-
     }
 
     public function load_updates_nobs (Request $request)
@@ -203,17 +193,7 @@ class WebsiteController extends Controller
         $comment->save();
         return redirect()->back();
     }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
+    
 
     public function search(Request $req)
     {

@@ -112,7 +112,6 @@ class ManagerStaffController extends Controller
             foreach (Account::find($value)->projects as $project){
                 EventComponent::new_event($project, 'user', $user->id);
             }
-
         };
 
 
@@ -122,7 +121,6 @@ class ManagerStaffController extends Controller
         }
 
         return redirect()->action('ManagerStaffController@index');
-
     }
 
     public function modal_user (Request $req) {
@@ -166,7 +164,6 @@ class ManagerStaffController extends Controller
         return response()->json([
             'success' => 0,
         ]);
-
     }
 
     public function info(Request $req)
@@ -249,15 +246,12 @@ class ManagerStaffController extends Controller
         }
 
         return response()->json(['success' => $res]);
-
     }
 
     public function delete_site(Request $req)
     {
-
         Account::find($req->acc_id)->delete_user(User::find($req->user_id));
 
         return response()->json(['success']);
-
     }
 }

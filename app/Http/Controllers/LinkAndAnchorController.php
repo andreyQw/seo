@@ -40,7 +40,6 @@ class LinkAndAnchorController extends Controller
                         break;
                     }
                 }
-
             }
 
             $anchors = $edition_proj->anchors;
@@ -87,9 +86,7 @@ class LinkAndAnchorController extends Controller
             }
 
             return view('admin.link_anchor', ['projects' => $projects]);
-
         }
-
     }
 
     public function confirm (Request $req) {
@@ -131,7 +128,6 @@ class LinkAndAnchorController extends Controller
             ]));
 
             $to_mail['anchors'][] = array('anchor' => $req->anchor[$i], 'link' => $req->url[$i]);
-
         }
 
         if($req->description){
@@ -157,16 +153,13 @@ class LinkAndAnchorController extends Controller
     public function show_modal (Request $req) {
 
         $proj = Project::find($req->id);
-
         $anch = $proj->anchors;
 
         return response()->json(['project' => $proj, 'anchor' => $anch]);
-
     }
 
     public function admin_edit(Request $req)
     {
-        
         $project = Project::find($req->id);
 
         foreach($req->anchors as $id => $anchor){
@@ -179,16 +172,13 @@ class LinkAndAnchorController extends Controller
             $anch->text = $anchor['text'];
             $anch->url = $anchor['url'];
             $anch->save();
-
         }
 
         return redirect()->action('LinkAndAnchorController@index');
-
     }
 
     public function client_edit(Request $req)
     {
-
         foreach($req->anchors as $id => $anchor){
 
             $anch = Anchor::find($id);
@@ -199,11 +189,9 @@ class LinkAndAnchorController extends Controller
             $anch->text = $anchor['text'];
             $anch->url = $anchor['url'];
             $anch->save();
-
         }
 
         return redirect()->action('LinkAndAnchorController@index');
-
     }
 
     public function search_project(Request $req)

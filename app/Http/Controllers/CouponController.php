@@ -50,16 +50,6 @@ class CouponController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $req)
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -90,8 +80,6 @@ class CouponController extends Controller
 
         $coupon->save();
 
-        /*dd($request);*/
-
         if($request->categories){
             foreach (Categorie::whereIn('id', $request->categories)->get() as $cat) {
                 $coupon->products()->saveMany($cat->products->whereNotIn('id', $coupon->products()->pluck('product_id')));
@@ -121,28 +109,7 @@ class CouponController extends Controller
         return redirect()->route('coupon.index');
 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Coupon  $coupon
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Coupon $coupon)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Coupon  $coupon
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Coupon $coupon)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.

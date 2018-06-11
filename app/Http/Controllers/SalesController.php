@@ -21,32 +21,32 @@ class SalesController extends Controller
         $sales_last_mo = Order::whereDate('created_at', '<', $date)->whereDate('created_at', '>=', $date_last_mo)->sum('amount');
         $sales_this_mo = Order::whereDate('created_at', '>=', $date)->sum('amount');
         if($sales_last_mo <= 0){
-            $analyts['sale']['proc'] = '100%';
-            $analyts['sale']['trend'] = '+';
+            $analytics['sale']['proc'] = '100%';
+            $analytics['sale']['trend'] = '+';
         }elseif($sales_this_mo <= 0){
-            $analyts['sale']['proc'] = '0%';
-            $analyts['sale']['trend'] = '-';
+            $analytics['sale']['proc'] = '0%';
+            $analytics['sale']['trend'] = '-';
         }else{
             $proc = $sales_this_mo / $sales_last_mo * 100;
             if($proc > 100){
-                $analyts['sale']['proc'] = number_format($proc - 100, 1) . '%';
-                $analyts['sale']['trend'] = '+';
+                $analytics['sale']['proc'] = number_format($proc - 100, 1) . '%';
+                $analytics['sale']['trend'] = '+';
             }elseif($proc < 100){
-                $analyts['sale']['proc'] = number_format(100 - $proc, 1) . '%';
-                $analyts['sale']['trend'] = '-';
+                $analytics['sale']['proc'] = number_format(100 - $proc, 1) . '%';
+                $analytics['sale']['trend'] = '-';
             }
         }
 
-        $analyts['amount'] = $sales_this_mo;
+        $analytics['amount'] = $sales_this_mo;
 
         $orders_last_mo = Order::whereDate('created_at', '<', $date)->whereDate('created_at', '>=', $date_last_mo)->count('amount');
         $orders_this_mo = Order::whereDate('created_at', '>=', $date)->count('amount');
         if(($orders_last_mo - $orders_this_mo) < 0){
-            $analyts['orders']['trend'] = '+';
+            $analytics['orders']['trend'] = '+';
         }elseif (($orders_last_mo - $orders_this_mo) > 0){
-            $analyts['orders']['trend'] = '-';
+            $analytics['orders']['trend'] = '-';
         }
-        $analyts['orders']['count'] = $orders_this_mo;
+        $analytics['orders']['count'] = $orders_this_mo;
 
         $chart = $this->getPoints([
             'start' => (new \DateTime('now - 6 days'))->format('Y-m-d'),
@@ -57,7 +57,7 @@ class SalesController extends Controller
             'top_all' => $top_order_all,
             'top_month' => $top_order_month,
             'last_order' => $last_order,
-            'anal' => $analyts,
+            'anal' => $analytics,
             'data_chart' =>  $chart
         ]);
     }

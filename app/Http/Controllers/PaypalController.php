@@ -39,10 +39,7 @@ class PaypalController extends Controller
     public function addPayTransaction(Request $request, Order $order)
     {
         $data = $request->all();
-//        dd();
-
 //        $data['amount'] = '30000';
-//        $request->amount = '30000';
 
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|regex:/[a-zа-яё]/iu',
@@ -70,10 +67,9 @@ class PaypalController extends Controller
         \Session::put('company', $data['company']);
 
 //        dd($order);
-//        dd($request->all());
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-    //            dd($payer);
+
         $item_1 = new Item();
         $item_1->setName('order_'.$order->id)->setCurrency('USD')->setQuantity(1)->setPrice($request->amount);
 
@@ -116,9 +112,9 @@ class PaypalController extends Controller
 
         foreach($paymentPayPal->getLinks() as $link) {
             if($link->getRel() == 'approval_url')
-                {
-                    $redirect_url = $link->getHref();
-                    break;
+            {
+                $redirect_url = $link->getHref();
+                break;
             }
         }
 
@@ -137,8 +133,6 @@ class PaypalController extends Controller
 
         \Session::put('error','Unknown error occurred (1)');
         return redirect()->route('getPayForm', ['order' => $order]);
-//            return 'paywithpaypal';
-//            dd($item_1);
 
         return $this->payPalPayment($order);
     }
@@ -150,28 +144,21 @@ class PaypalController extends Controller
         // Get the payment ID before session clear
 
         $payment_id = $request->paymentId; //from get parameters
-//        $payer_id = $request->PayerID; //from get parameters
-//        dd($payment_id);
-        $user = \Session::get('user');
-//        dd($payment_id);// PAY-8GY20870MC6302647LLBZEII
 
-        // clear the session payment ID
-//        \Session::forget('paypal_payment_id');
+        $user = \Session::get('user');
 
         $order = \Session::get('order');
 //        \Session::forget('order');
+//        $order = Order::where('id', $order_id)->first();
 //        dd($order);
 
-//        $order = Order::where('id', $order_id)->first();
 
         if (empty($request->PayerID) || empty($request->token))
         {
             \Session::put('error','PayPal payment failed (2)');
             return redirect()->route('getPayForm', ['order' => $order]);
-//            return Redirect::route('paywithpaypal');
         }
         $payment = \PayPal\Api\Payment::get($payment_id, $this->_api_context);
-//        dd($payment);
 
         $execution = new PaymentExecution();
         $execution->setPayerId($request->PayerID);
@@ -192,22 +179,11 @@ class PaypalController extends Controller
                 );
                 \Session::forget('company');
 
-//                $payMent = new Payment();
-//                $payMent->stripe_charge_id = $charge->id;
-//                $payMent->order_id = $order->id;
-//                $payMent->amount = $charge->amount;
-//                $payMent->balance_transaction = $charge->balance_transaction;
-//                $payMent->created = $charge->created;
-//                $payMent->currency = $charge->currency;
-//                $payMent->save();
                 $payMent = new Payment();
-//                $payMent->transaction_charge_id = $charge->id;
                 $payMent->transaction_charge_id = $result->getId();
                 $payMent->order_id = $order->id;
                 $payMent->type_payment = 'payPal';
                 $payMent->amount = $order->amount;
-//        $payMent->balance_transaction = $charge->balance_transaction;
-//                $payMent->created = $order->created;
                 $payMent->currency = 'usd';
                 $payMent->save();
                 $order->update(['approve_status'=> 'completed']);
@@ -221,13 +197,11 @@ class PaypalController extends Controller
         return Redirect::route('getPayForm', [$order]);
     }
 
-    public function getSubscriptionCancel(Request $request, $subscription_id)
+    public function getSubscriptionCancel(Request $request)
     {
-//        dd('cancel');
         $order = \Session::get('order');
-//        $subscription = Subscription::find($subscription_id);
         \Session::flash('success', 'Subscription Error!');
-//        return redirect()->route('getPayForm', $subscription->client_id);
+
         return redirect()->route('getPayForm', ['order' => $order]);
     }
 
@@ -240,7 +214,7 @@ class PaypalController extends Controller
         $credentials = array('email' => $order->user->email, 'password' => $random_password);
         if (Auth::attempt($credentials)) {
             // 'Auth was success'
-            /*dd(Auth::user());*/
+
             $data = array(
                 'link' => URL::to('/') . '/account/setAccountForm',
                 'login' => $order->user->email,
@@ -259,15 +233,10 @@ class PaypalController extends Controller
 
     private function getParameters($order){
         return [
-//            'action' => route('addPay', [$order]),
+            'action' => route('addPay', [$order]),
             'order' => $order,
             'projects' => $order->projects,
-
         ];
     }
-
-    public function save()
-    {
-        
-    }
+    
 }

@@ -39,6 +39,7 @@ class ProductionController extends Controller
             ->withPartners($partners)
             ->withProductions($productions);
     }
+
     public function search_partner(Request $request)
     {
         if($request->search_partner){
@@ -97,6 +98,7 @@ class ProductionController extends Controller
             ->withWriters($writers)
             ->withProductions($productions);
     }
+
     public function content_search(Request $request)
     {
         $writers = Writer::all();
@@ -118,10 +120,8 @@ class ProductionController extends Controller
             return view('production.content_manager')
                 ->withWriters($writers)
                 ->withProductions($productions);
-        }
-        else
+        }else
             return redirect()->route('production.content_manager');
-
     }
 
     public function editor_manager()
@@ -132,7 +132,7 @@ class ProductionController extends Controller
             ->whereNotNull('writer_id')
             ->get();
         $editors = Editor::all();
-//        dd($productions);
+
         return view('production.editor_manager')
             ->withEditors($editors)
             ->withProductions($productions);
@@ -161,7 +161,6 @@ class ProductionController extends Controller
         }
         else
             return redirect()->route('production.editor_manager');
-
     }
 
     public function personalization_manager()
@@ -172,7 +171,6 @@ class ProductionController extends Controller
             ->where('content_edited','Finished')
             ->whereNotNull('writer_id')
             ->whereNotNull('editor_id')
-            // ->where('overall','!=','Finished')
             ->get();
         return view('production.personalization_manager')
             ->withProductions($productions);
@@ -201,7 +199,6 @@ class ProductionController extends Controller
         }
         else
             return redirect()->route('production.personalization_manager');
-
     }
 
     public function live_manager()
@@ -235,10 +232,7 @@ class ProductionController extends Controller
             ->withPartners($partners)
             ->withProductions($productions);
     }
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -265,7 +259,6 @@ class ProductionController extends Controller
         $production->save();
 
         return redirect()->back();
-
     }
 
     public function topic_ajax(Request $request)
@@ -353,53 +346,8 @@ class ProductionController extends Controller
             $productions->live_link = $request->x;
             $productions->save();
         }
-
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Production  $production
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Production $production)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Production  $production
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Production $production)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Production  $production
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Production $production)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Production  $production
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Production $production)
-    {
-        //
-    }
+    
 
     public function download_doc_content($id) {
         return response()->download('storage/content/' . Production::find($id)->content);

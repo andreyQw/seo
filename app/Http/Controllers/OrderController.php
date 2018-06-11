@@ -37,10 +37,8 @@ class OrderController extends Controller
     }
 
     public function addOrder(CreateOrderRequest $request)
-
     {
 
-       // dd($request);
         $data = $request->all();
 //        dd($data);
 
@@ -48,7 +46,7 @@ class OrderController extends Controller
         $account->email = $data['email'];
         $account->save();
 
-//dd($data['email']);
+
 //        $user = User::where(['email' => $data['email']])->first();
 //        if (!$user){
         $user = new User();
@@ -61,11 +59,10 @@ class OrderController extends Controller
         $user->accounts()->save($account);
 //        }
 
-//        dd($user->accounts);
         $products = $data['product_id'];
         $quantity = $data['quantity'];
         $coupons[] = $data['coupon_id'];
-//        dd($coupon);
+
         $projects = [];
         for ($i = 0; $i < count($data['url']); $i++) {
 //            dump($i, count($data['url']));
@@ -90,33 +87,10 @@ class OrderController extends Controller
                 $subTotal = $subTotal + ($product->price * $product->pivot->quantity);
             }
         }
-//        $total_order = $subTotal;
-//        $this->applyCoupon($total_order, $coupon);
-//        dd($coupon);
-//        if ($coupon){
-//            $order->amount = $this->applyCoupon($subTotal, $coupon);
-//            $order->without_discount = $subTotal;
-//        }else{
-//            $order->without_discount = $subTotal;
-//            $order->amount = $subTotal;
-//        }
-//        $order->save();
 
-//        dd(route('addPayStripe', [$order]));
-
-//        $action['paypal'] = route('addPaypal', [$order]);
-//        $action['stripe'] = route('addPayStripe', [$order]);
-
-//        dd(count($order->projects));
         return redirect()->route('getPayForm', ['order' => $order]);
-//        return view('order.paymentOrderForm',[
-////                'action' => route('addPay'),
-////                'action' => route('addPay', [$order]),
-//                'order' => $order,
-////                'user' => $user,
-//            ]
-//        );
     }
+
     public function overviewOrders()
     {
         return view('order.overviewOrders');
@@ -127,25 +101,18 @@ class OrderController extends Controller
         $user = Auth::user();
         $products = Product::all();
 //        $products = Product::where('status', 'show')->get();
-//        dd($products);
+
+        $on_holdOrdersCount = Order::where('approve_status', 'on_hold')->count();
+        $completedCount = Order::where('approve_status', 'completed')->count();
+        $refundedOrdersCount = Order::where('approve_status', 'refunded')->count();
+
         if ($user->hasRole('client')){
             $orders = Order::where('user_id', $user->id )->paginate(4);
             $allOrdersCount = $orders->total();
-            $on_holdOrdersCount = Order::where('approve_status', 'on_hold')->count();
-            $completedCount = Order::where('approve_status', 'completed')->count();
-            $refundedOrdersCount = Order::where('approve_status', 'refunded')->count();
         }else{
             $orders = Order::paginate(4);
             $allOrdersCount = $orders->total();
-            $on_holdOrdersCount = Order::where('approve_status', 'on_hold')->count();
-            $completedCount = Order::where('approve_status', 'completed')->count();
-            $refundedOrdersCount = Order::where('approve_status', 'refunded')->count();
-//            dd($orders[0]->invoice);
         }
-//        $ordersNotPay = Order::where('votes', '>', 100)->paginate(15);
-//        dd($orders->total());
-//        $orders = $allOrders->paginate(5);
-//        $all = count($allOrders);
 
         return view('order.allOrdersClient',[
                 'orders' => $orders,
@@ -161,7 +128,6 @@ class OrderController extends Controller
 
     public function getOrderAjax(Request $request)
     {
-//        dd($request->order_id);
         $order = Order::where('id', $request->order_id)->first();
 //        dd($order);
         $data = [];
@@ -202,7 +168,7 @@ class OrderController extends Controller
             \Session::put('start_date', new \DateTime($data['start_date']));
             \Session::put('end_date', new \DateTime($data['end_date']));
 
-//            $orders = Order::whereDate('updated_at', '>=', (new \DateTime($data['start_date']))->format('Y-m-d'));
+
             $orders = Order::whereDate('created_at', '>=', (new \DateTime($data['start_date']))->format('Y-m-d'))
                 ->whereDate('created_at', '<=', (new \DateTime($data['end_date']))->format('Y-m-d'))->paginate(4);
 
@@ -346,9 +312,6 @@ class OrderController extends Controller
 
     public function onHoldOrder(Request $request)
     {
-//        dd($request->orders_id);
-//        Order::whereIn('id', '=', $request->orders_id)
-//            ->update(['approve_status' => 'on_hold']);
         foreach ($request->orders_id as $orderId){
             Order::where('id', $orderId)->update(['approve_status' => 'on_hold']);
 //            dd($orderId);
@@ -358,9 +321,6 @@ class OrderController extends Controller
 
     public function approveOrder(Request $request)
     {
-//        dd($request->orders_id);
-//        Order::whereIn('id', '=', $request->orders_id)
-//            ->update(['approve_status' => 'on_hold']);
         foreach ($request->orders_id as $orderId){
             Order::where('id', $orderId)->update(['approve_status' => 'completed']);
 //            dd($orderId);
@@ -370,9 +330,6 @@ class OrderController extends Controller
 
     public function refundedOrder(Request $request)
     {
-//        dd($request->orders_id);
-//        Order::whereIn('id', '=', $request->orders_id)
-//            ->update(['approve_status' => 'on_hold']);
         foreach ($request->orders_id as $orderId){
             Order::where('id', $orderId)->update(['approve_status' => 'refunded']);
 //            dd($orderId);
@@ -382,22 +339,15 @@ class OrderController extends Controller
 
     public function deleteOrder(Request $request)
     {
-//        dd($request->orders_id);
-//        Order::whereIn('id', '=', $request->orders_id)
-//            ->update(['approve_status' => 'on_hold']);
         foreach ($request->orders_id as $orderId){
-//            dd(Order::where('id', $orderId));
             Order::where('id', $orderId)->delete();
-//            dd($orderId);
         }
         return 'success';
     }
 
     public function getCoupon(Request $request)
     {
-        //First Order
-//        dd($request->coupon_name);
-//        $coupon = Coupon::where('name', ltrim($name))->first();
+
         $coupon = Coupon::where('name', ltrim($request->coupon_name))->first();
 //        dd($coupon);
         if ($coupon){
@@ -409,8 +359,6 @@ class OrderController extends Controller
 
     public function applyCoupon($total_order, $coupon)
     {
-        //discount_type(discount_id) 1->%, 2->$
-
         if ($coupon->discount_id == 1){
 //            discount_id 1->%
             $with_discount = $total_order * (100 - $coupon->amount)/100;
@@ -426,14 +374,13 @@ class OrderController extends Controller
     {
         $order = $id;
         dd($order);
-//        dd($order->payment);
     }
 
     public function editOrder(Request $request)
     {
         $order = Order::where('id', $request->order_id)->first();
         $data = $request->all();
-//        dd($data['products_id']);
+
         $order = OrderComponent::editOrder(
             $order, 
             $data['projects_id'], 

@@ -51,12 +51,6 @@ class PayController extends Controller
     public function addPayStripe(Request $request, Order $order)
     {
         $data = $request->all();
-//        dd($request);
-
-
-//        $this->validate($request, [
-//            'first_name' => 'required',
-//        ]);
 
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|regex:/[a-zа-яё]/iu',
@@ -72,32 +66,17 @@ class PayController extends Controller
 
         if($validator->fails()){
 
-//            dd($this->getParameters($order));
             return view('order.paymentOrderForm',
                 $this->getParameters($order)
             )->withErrors($validator);
         };
 
-//        dd($order->id);
-//        if ($data['payment_method'] == 'payPal'){
-////            dd('payPal');
-//            return $this->payPalPayment($order);
-//        }
-//        else{
-//            dd('stripe');
-//        }
-
-//        dd($data);
         $user = User::where('email', $data['email'])->first();
         $user->first_name = $data['first_name'];
         $user->last_name = $data['last_name'];
         $user->phone = $data['phone'];
         $user->country = $data['country'];
         $user->save();
-//        dd($user);
-
-
-        //getParameters return arr with parameters
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
         try{
@@ -125,9 +104,9 @@ class PayController extends Controller
             // Too many requests made to the API too quickly
             $body = $e->getJsonBody();
             $err_stripe  = $body['error'];
-
 //            dd('Too many requests made to the API too quickly');
 //            dd($body);
+
             return view('order.paymentOrderForm',
                 $this->getParameters($order)
             )->withErrors($err_stripe);
@@ -198,9 +177,6 @@ class PayController extends Controller
             "source" => $token,
         ));
 
-
-//        $charge = stripePayment($data, $order);
-
         $payMent = new Payment();
         $payMent->transaction_charge_id = $charge->id;
         $payMent->order_id = $order->id;
@@ -211,16 +187,11 @@ class PayController extends Controller
         $payMent->currency = $charge->currency;
         $payMent->save();
 
-
-//        $order->account()->where('id',$order->account_id)->update(['name'=> $data['company']]);
-//        dd($order->user->id);
-        $order->account()->update(
-            [
+        $order->account()->update([
                 'name'=> $data['company'],
                 'owner_id' => $order->user->id,
                 'email'=> $data['email'],
-            ]
-        );
+        ]);
         $order->update(['approve_status'=> 'completed']);
 //        dd($order->account);
 
@@ -229,28 +200,13 @@ class PayController extends Controller
         }else{
             return redirect()->route('home');
         }
-//        return redirect(route('registration_success'));
-//        return redirect(route('registration_success', ['email' => $user->email]));
-
-//        return view('account.accountSetup',[
-//            'action' => route('addNewProduct'),
-//            'order' => $order,
-//        ]);
     }
 
     private function getParameters($order){
-//        $project_price = Config::get('project_price.project_price');
-//        $subTotal = 0;
-//        $projects_cost = count($order->projects) * $project_price;
-//        foreach ($order->projects as $project){
-//            foreach ($project->products as $product){
-//                $subTotal = $subTotal + ($product->price * $product->pivot->quantity);
-//            }
-//        }
-//        $total_order = $subTotal + $projects_cost;
+
 
         return [
-//            'action' => route('addPay', [$order]),
+            'action' => route('addPay', [$order]),
             'order' => $order,
             'projects' => $order->projects,
 //            'subTotal' => $subTotal,
@@ -391,10 +347,5 @@ class PayController extends Controller
         return Redirect::route('getPayForm');
 //            return 'paywithpaypal';
 //            dd($item_1);
-    }
-
-    public function stripePayment($data)
-    {
-
     }
 }

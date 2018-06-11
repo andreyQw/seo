@@ -18,19 +18,31 @@ class FeedController extends Controller
             $pid = Auth::user()->projects()->pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->latest()->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('super_admin|admin')){
             $pid = Project::pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->latest()->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('production|partner')){
             $pid = Auth::user()->projects()->pluck('id');
-            $feed = Feed::whereIn('project_id', $pid)->whereIn('event_id', Event::whereIn('type', ['production_doc', 'production_topic_approved', 'production_content_written', 'production_content_edited', 'production_content_personalized', 'production_live'])->pluck('id'))->latest()->take(20)->get();
+            $feed = Feed::whereIn('project_id', $pid)
+                ->whereIn('event_id', Event::whereIn('type', [
+                    'production_doc',
+                    'production_topic_approved',
+                    'production_content_written',
+                    'production_content_edited',
+                    'production_content_personalized',
+                    'production_live'
+                ])->pluck('id'))->latest()->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasRole('writer')){
             $pid = Auth::user()->projects()->pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->where('user_id', Auth::user()->id)->latest()->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
             // dd($feed);
+
         }elseif(Auth::user()->hasRole('editor')){
             $pid = Auth::user()->projects()->pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->where('event_id', Auth::user()->id)->latest()->take(20)->get();
@@ -46,13 +58,15 @@ class FeedController extends Controller
 
         foreach ($feed as $f){
             if($pid == 0){
-                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime())->format('Y-m-d'))){
+                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime())->format('Y-m-d')))
+                {
                     $dates['Today'][$count][] = $f;
                     $pid = $f->project->id;
                     continue;
                 }
 
-                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime('yesterday'))->format('Y-m-d'))){
+                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime('yesterday'))->format('Y-m-d')))
+                {
                     $dates['Yesterday'][$count][] = $f;
                     $pid = $f->project->id;
                     continue;
@@ -123,26 +137,41 @@ class FeedController extends Controller
 
     public function load(Request $req)
     {
-
         if(Auth::user()->hasAnyRole('client|pm')){
             $pid = Auth::user()->projects()->pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->latest()->skip($req->offset)->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('super_admin|admin')){
             $pid = Project::pluck('id');
             $feed = Feed::whereIn('project_id', $pid)->latest()->skip($req->offset)->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('production|partner')){
             $pid = Auth::user()->projects()->pluck('id');
-            $feed = Feed::whereIn('project_id', $pid)->whereIn('event_id', Event::whereIn('type', ['production_doc', 'production_topic_approved', 'production_content_written', 'production_content_edited', 'production_content_personalized', 'production_live'])->pluck('id'))->latest()->skip($req->offset)->take(20)->get();
+            $feed = Feed::whereIn('project_id', $pid)
+                ->whereIn('event_id', Event::whereIn('type', [
+                    'production_doc',
+                    'production_topic_approved',
+                    'production_content_written',
+                    'production_content_edited',
+                    'production_content_personalized',
+                    'production_live'])->pluck('id'))
+                ->latest()->skip($req->offset)->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('writer')){
             $pid = Auth::user()->projects()->pluck('id');
-            $feed = Feed::whereIn('project_id', $pid)->whereIn('event_id', Event::whereIn('type', ['production_content_written'])->pluck('id'))->latest()->skip($req->offset)->take(20)->get();
+            $feed = Feed::whereIn('project_id', $pid)
+                ->whereIn('event_id', Event::whereIn('type', ['production_content_written'])->pluck('id'))
+                ->latest()->skip($req->offset)->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
+
         }elseif(Auth::user()->hasAnyRole('editor')){
             $pid = Auth::user()->projects()->pluck('id');
-            $feed = Feed::whereIn('project_id', $pid)->whereIn('event_id', Event::whereIn('type', ['production_content_edited'])->pluck('id'))->latest()->skip($req->offset)->take(20)->get();
+            $feed = Feed::whereIn('project_id', $pid)
+                ->whereIn('event_id', Event::whereIn('type', ['production_content_edited'])->pluck('id'))
+                ->latest()->skip($req->offset)->take(20)->get();
             $feed_count = Feed::whereIn('project_id', $pid)->count();
         }
 

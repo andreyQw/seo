@@ -55,23 +55,23 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $anal = array();
-        $anal['ordered'] = 0;
-        $anal['live'] = 0;
-        $anal['qc'] = 0;
-        $anal['wc'] = 0;
-        $anal['e'] = 0;
-        $anal['p'] = 0;
-        $anal['waiting'] = 0;
+        $analytics = array();
+        $analytics['ordered'] = 0;
+        $analytics['live'] = 0;
+        $analytics['qc'] = 0;
+        $analytics['wc'] = 0;
+        $analytics['e'] = 0;
+        $analytics['p'] = 0;
+        $analytics['waiting'] = 0;
         foreach (Auth::user()->accounts as $account) {
             foreach ($account->projects as $project) {
-                $anal['ordered'] += $project->products->sum('pivot.quantity');
-                $anal['live'] += $project->productions()->where('live', 'Live')->count();
-                $anal['qc'] += $project->productions()->whereNull('client_approved')->count();
-                $anal['wc'] += $project->productions()->where('content_written', 'Finished')->count();
-                $anal['e'] += $project->productions()->where('content_edited', 'Finished')->count();
-                $anal['p'] += $project->productions()->where('content_personalized', 'Finished')->count();
-                $anal['waiting'] += $project->productions()->where('payment', 'Paid')->count();
+                $analytics['ordered'] += $project->products->sum('pivot.quantity');
+                $analytics['live'] += $project->productions()->where('live', 'Live')->count();
+                $analytics['qc'] += $project->productions()->whereNull('client_approved')->count();
+                $analytics['wc'] += $project->productions()->where('content_written', 'Finished')->count();
+                $analytics['e'] += $project->productions()->where('content_edited', 'Finished')->count();
+                $analytics['p'] += $project->productions()->where('content_personalized', 'Finished')->count();
+                $analytics['waiting'] += $project->productions()->where('payment', 'Paid')->count();
             }
         }
 
@@ -85,13 +85,15 @@ class ClientController extends Controller
 
         foreach ($feed as $f){
             if($pid == 0){
-                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime())->format('Y-m-d'))){
+                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime())->format('Y-m-d')))
+                {
                     $dates['Today'][$count][] = $f;
                     $pid = $f->project->id;
                     continue;
                 }
 
-                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime('yesterday'))->format('Y-m-d'))){
+                if(strtotime((new \DateTime($f->created_at))->format('Y-m-d')) == strtotime((new \DateTime('yesterday'))->format('Y-m-d')))
+                {
                     $dates['Yesterday'][$count][] = $f;
                     $pid = $f->project->id;
                     continue;
@@ -163,7 +165,7 @@ class ClientController extends Controller
         $tz_sydnay = (new \DateTime('now', new \DateTimeZone('Australia/Sydney')))->format('P');
 
         return view('client.client_dashboard', [
-            'anal' => $anal,
+            'anal' => $analytics,
             'orders' => $orders,
             'dates' => $dates,
             'count_feed' => $feed_count,
@@ -251,11 +253,7 @@ class ClientController extends Controller
 
     }
 
-    public function create()
-    {
 
-
-    }
     private function getParameters($order){
         return [
 //            'action' => route('addPay', [$order]),
@@ -383,77 +381,7 @@ class ClientController extends Controller
                 ));
             }catch (\Stripe\Error\Card $e){
                 return redirect()->route('client.web',$request->project_id);
-                // Since it's a decline, \Stripe\Error\Card will be caught
-                // $body = $e->getJsonBody();
-                // $err_stripe  = $body['error'];
-
-
-                // return view('order.paymentOrderForm',
-                //     $this->getParameters($order)
-                // )->withErrors($err_stripe);
-
             }
-            // catch (\Stripe\Error\RateLimit $e) {
-            //     // Too many requests made to the API too quickly
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-            // } catch (\Stripe\Error\InvalidRequest $e) {
-            //     // Invalid parameters were supplied to Stripe's API
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-            // } catch (\Stripe\Error\Authentication $e) {
-            //     // Authentication with Stripe's API failed
-            //     // (maybe you changed API keys recently)
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-            // } catch (\Stripe\Error\ApiConnection $e) {
-            //     // Network communication with Stripe failed
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-
-            // } catch (\Stripe\Error\Base $e) {
-            //     // Display a very generic error to the user, and maybe send
-            //     // yourself an email
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-
-            // } catch (Exception $e) {
-            //     // Something else happened, completely unrelated to Stripe
-            //     $body = $e->getJsonBody();
-            //     $err_stripe  = $body['error'];
-
-
-            //     return view('order.paymentOrderForm',
-            //         $this->getParameters($order)
-            //     )->withErrors($err_stripe);
-            // }
-
-
 
             $charge = \Stripe\Charge::create(array(
                 "amount" => $order->amount*100,
@@ -461,8 +389,6 @@ class ClientController extends Controller
                 "description" => "Example charge",
                 "source" => $token,
             ));
-
-
 
             $payMent = new Payment();
             $payMent->transaction_charge_id = $charge->id;
@@ -472,19 +398,7 @@ class ClientController extends Controller
             $payMent->currency = $charge->currency;
             $payMent->save();
             $order->update(['approve_status'=> 'completed']);
-
-            // if($this->authenticate($order)){
-            //     // return redirect()->route('setAccountForm');
-            //     return redirect()->route('client.web',$request->project_id);
-                
-            // }else{
-            //     return redirect()->route('home');
-
-            // }
-
-            // return redirect()->route('addPayStripe', ['order' => $order]);
         }
-
 
         return redirect()->route('client.web',$request->project_id);
     }
@@ -519,20 +433,10 @@ class ClientController extends Controller
             $production->save();
             echo $oid;
             }
-            else echo 0;       
+            else echo 0;
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Client $client)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -543,31 +447,7 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
 //        $client = Client::find($client->id);
-//
 //        return view('dashboard.subscriber.contacts.edit_contact_modal')->with(['client' => $client]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Client $client)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Client $client)
-    {
-        //
     }
 
     public function authenticate($order)
@@ -594,6 +474,5 @@ class ClientController extends Controller
             return false;
         }
     }
-
 
 }

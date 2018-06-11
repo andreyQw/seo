@@ -92,139 +92,104 @@ Route::group([
 
 
 
-/* MAKSYM KYSELYOV */
+/* dev*/
 Route::group(['prefix' => '/user', 'middleware' => ['role:super_admin|admin', 'auth']], function (){
 
     Route::get('/', 'ManagerStaffController@index')->name('staff_manager');
-
     Route::post('/create', 'ManagerStaffController@create_user')->name('createUser');
-
     Route::post('/card', 'ManagerStaffController@modal_user');
-
     Route::post('/delete', 'ManagerStaffController@delete_user')->name('deleteUser');
-
     Route::post('/edit', 'ManagerStaffController@edit_info_user')->name('edit');
-
     Route::post('/info', 'ManagerStaffController@info')->name('info');
-
     Route::group(['prefix' => '/sites', 'middleware' => ['role:super_admin|admin', 'auth']], function (){
-
-        Route::post('/add', 'ManagerStaffController@add_site');
-
-        Route::post('/delete', 'ManagerStaffController@delete_site');
+    Route::post('/add', 'ManagerStaffController@add_site');
+    Route::post('/delete', 'ManagerStaffController@delete_site');
 
     });
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => '/settings', 'middleware' => ['auth']], function (){
 
     Route::get('/', 'UsersController@index')->name('settings');
-
     Route::post('/change_pass', 'UsersController@change_password')->name('change_pass');
-
     Route::post('/change_pi', 'UsersController@change_personal_info')->name('change_personal_info');
-
     Route::post('/change_notifi', 'UsersController@change_notifi')->name('change_notifi');
-
     Route::post('/stop_sending', 'UsersController@stop_sending')->name('stop_sending');
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => '/link-anchor', 'middleware' => ['auth']], function () {
 
     Route::get('/{id?}', 'LinkAndAnchorController@index')->name('link_anchor');
-
     Route::post('/confirm', 'LinkAndAnchorController@confirm')->name('link_confirm');
-
     Route::post('/modal', 'LinkAndAnchorController@show_modal')->name('link_modal');
-
     Route::post('/admin/edit', 'LinkAndAnchorController@admin_edit')->name('admin_edit_anchors');
-
     Route::post('/client/edit', 'LinkAndAnchorController@client_edit')->name('client_edit_anchors');
-
     Route::post('/search', 'LinkAndAnchorController@search_project')->name('search_anchors');
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev*/
 Route::group(['prefix' => '/bio', 'middleware' => ['auth']], function () {
 
     Route::get('/', 'BioManagerController@index')->name('bio_manager');
-
     Route::post('/help', 'BioManagerController@help_bio')->name('bio_help');
-
     Route::post('/confirm', 'BioManagerController@confirm')->name('bio_confirm');
-
     Route::get('/download/{id?}', 'BioManagerController@download_bio')->name('bio_download');
-
     Route::post('/modal', 'BioManagerController@view_modal')->name('bio_modal');
-
     Route::post('/edit', 'BioManagerController@edit_bio')->name('bio_edit')->middleware(['role:super_admin|admin|pm|']);
-
     Route::post('/search', 'BioManagerController@search_bio')->name('bio_search')->middleware(['role:super_admin|admin|pm|']);
-
     Route::get('/requests', 'BioManagerController@requests')->name('bio_request')->middleware(['role:super_admin|admin|pm|production']);
-
     Route::post('/requests/submit/{id}', 'BioManagerController@add_bio')->name('bio_add')->middleware(['role:super_admin|admin|pm|production']);
 
     Route::post('/requests/search', 'BioManagerController@search_request_bio')->name('bio_request_search')->middleware(['role:super_admin|admin|pm|production']);
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev*/
 Route::group(['prefix' => '/partner', 'middleware' => ['auth', 'role:super_admin|admin|partner']], function (){
 
     Route::get('/', 'PartnersController@index')->name('partners');
-
     Route::post('/add', 'PartnersController@add')->name('add_partner');
-
     Route::post('/delete', 'PartnersController@delete')->name('delete_partner');
-
     Route::post('/search', 'PartnersController@search')->name('partner_search');
-
     Route::post('/edit', 'PartnersController@edit')->name('edit_info_partner');
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => 'coupon', 'middleware' => ['auth', 'role:super_admin|admin']], function (){
 
     Route::resource('coupon', 'CouponController');
-
     Route::post('/status-change/{coupon}', 'CouponController@status_change')->name('coupon.status');
-
     Route::post('/search', 'CouponController@search')->name('coupon.search');
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => '/sales', 'middleware' => ['auth', 'role:super_admin|admin']], function (){
 
     Route::get('/', 'SalesController@index')->name('sales');
-
     Route::post('/chart', 'SalesController@get_chart_data')->name('chart');
 
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => '/feed', 'middleware' => ['auth']], function (){
     
     Route::get('/', 'FeedController@index')->name('feed');
-
     Route::post('/load', 'FeedController@load')->name('feed.load');
     
 });
 
-/* MAKSYM KYSELYOV */
+/* dev */
 Route::group(['prefix' => '/account-manager', 'middleware' => ['auth', 'role:admin|super_admin|pm']], function (){
 
     Route::get('/', 'AccountController@index')->name('account.manager');
-
     Route::post('/add', 'AccountController@new_account')->name('account.manager.add');
-
     Route::post('/search', 'AccountController@search')->name('account.manager.search');
 
 });
@@ -237,12 +202,12 @@ Route::group([
     function () {
         Route::get('/addFormOrder', 'OrderController@addFormOrder')->name('addFormOrder');
         Route::match(['get', 'post'], '/addOrder', 'OrderController@addOrder')->name('addOrder');
-//        Route::match(['get', 'post'], '/addOrder', 'OrderController@addOrder')->name('allOrders');
+
 //        Route::post('pay', 'PayController@addPay')->name('addPay');
         Route::get('getPayForm/{order}', 'PayController@getPayForm')->name('getPayForm');
 
         Route::post('getCoupon', 'OrderController@getCoupon')->name('getCoupon');
-
+        
         Route::match(['get', 'post'], 'payStripe/{order}', 'PayController@addPayStripe')->name('addPayStripe');
 
         Route::match(['get', 'post'], 'payPal/{order}', 'PaypalController@addPayTransaction')->name('addPaypal');
